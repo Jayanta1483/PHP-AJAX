@@ -39,26 +39,26 @@ if(isset($_GET["id"]) && $_GET["id"]!==""){
 // FROM DATABASE:
 
 $select = "select * from catagory";
-$stmt = $connect->query($select);
+$result = $connect->query($select);
      switch($value){
          case "comedy":
-            while($result = $stmt->fetch_assoc()){
-            echo "<option>".htmlspecialchars($result['comedy'])."</option>";
+            while($row = $result->fetch_assoc()){
+            echo "<option>".htmlspecialchars($row['comedy'])."</option>";
             }
             break;
             case "horror":
-                while($result = $stmt->fetch_assoc()){
-                    echo "<option>".htmlspecialchars($result['horror'])."</option>";
+                while($row = $result->fetch_assoc()){
+                    echo "<option>".htmlspecialchars($row['horror'])."</option>";
                     }
                 break;
                 case "action":
-                    while($result = $stmt->fetch_assoc()){
-                        echo "<option>".htmlspecialchars($result['action'])."</option>";
+                    while($row = $result->fetch_assoc()){
+                        echo "<option>".htmlspecialchars($row['action'])."</option>";
                         }
                     break;
                     case "romance":
-                        while($result = $stmt->fetch_assoc()){
-                            echo "<option>".htmlspecialchars($result['romance'])."</option>";
+                        while($row = $result->fetch_assoc()){
+                            echo "<option>".htmlspecialchars($row['romance'])."</option>";
                             }
                         break;
                         default:
