@@ -14,17 +14,17 @@ require "connection.php";
 <div class="container-sm my-5 mx-5">
 <form action="" class="w-50 mx-auto">
 <div class="input-group">
-    <span class="input-group-text inputGroupBg">Genres</span>
-    <select  class="form-select"><option selected>Select a Genre..</option>
-        <option value="">Comedy</option>
-        <option value="">Horror</option>
-        <option value="">Action</option>
-        <option value="">Romance</option>
+    <span class="input-group-text" >Genres</span>
+    <select  class="form-select" id="genre"><option selected>Select a Genre..</option>
+        <option value="comedy">Comedy</option>
+        <option value="horror">Horror</option>
+        <option value="action">Action</option>
+        <option value="romance">Romance</option>
     </select>
 </div>
 <div class="input-group my-3">
     <span class="input-group-text">Movies</span>
-    <select  class="form-select"><option selected>Select a Movie..</option>
+    <select  class="form-select" id="movie"><option selected>Select a Movie..</option>
         <!-- <option value=""></option>
         <option value=""></option>
         <option value=""></option>
@@ -34,7 +34,20 @@ require "connection.php";
 </form>
 </div>
 
+<script>
+const selectGenre = document.querySelector("#genre");
+const selectMovie = document.querySelector("#movie");
+selectGenre.addEventListener("change",function(){
+    let data = selectGenre.value;
+    let url = `process.php?id=${data}`;
+    
+    fetch(url).then(response=> response.text().then(text=>selectMovie.innerHTML = text))
+});
 
+
+
+
+</script>
 
 
 
